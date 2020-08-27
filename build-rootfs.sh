@@ -20,7 +20,8 @@ EOF
 make \
     GLOBAL_HSH_APT_CONFIG=$APTCONFDIR/apt.conf \
     GLOBAL_RELEASE=$(echo $BRANCH | tr '[:upper:]' '[:lower:]' | cut -f1 -d'.') \
-    GLOBAL_TARGET=$ARCH
+    GLOBAL_TARGET=$ARCH \
+    GLOBAL_REPO=$REPO
 
 mv .work/.out/altlinux.tar .
 

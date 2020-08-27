@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+cat > /etc/os-release << EOF
+ID="altlinux"
+NAME="ALT Linux"
+VERSION="$GLOBAL_RELEASE"
+EOF
+
+cat << EOF > /etc/apt/sources.list.d/local.list
+rpm http://ftp.altlinux.org/pub/distributions/ALTLinux $GLOBAL_REPO/$GLOBAL_TARGET classic
+rpm http://ftp.altlinux.org/pub/distributions/ALTLinux $GLOBAL_REPO/noarch classic
+EOF
