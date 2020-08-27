@@ -1,9 +1,7 @@
 #!/bin/bash -x
 
-BRANCH=${BRANCH:-Sisyphus}
+BRANCH=${BRANCH:-sisyphus}
 
-TAG=$(echo $BRANCH | tr '[:upper:]' '[:lower:]' | cut -f1 -d'/')
-
-docker build . -t "altlinux":"${TAG}"
+docker build . -t "altlinux":"${BRANCH}"
 
 rm altlinux.tar

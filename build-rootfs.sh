@@ -1,7 +1,9 @@
 #!/bin/bash -x
 
-BRANCH=${BRANCH:-Sisyphus}
 ARCH=${ARCH:-x86_64}
+BRANCH=${BRANCH:-sisyphus}
+
+[[ $BRANCH = "sisyphus" ]] && REPO="Sisyphus" || REPO="$BRANCH/branch"
 
 APTCONFDIR=$(mktemp -d)
 
@@ -11,13 +13,13 @@ Dir::Etc::SourceList "$APTCONFDIR/sources.list";
 EOF
 
 cat << EOF > $APTCONFDIR/sources.list
-rpm http://ftp.altlinux.org/pub/distributions/ALTLinux $BRANCH/$ARCH classic
-rpm http://ftp.altlinux.org/pub/distributions/ALTLinux $BRANCH/noarch classic
+rpm http://ftp.altlinux.org/pub/distributions/ALTLinux $REPO/$ARCH classic
+rpm http://ftp.altlinux.org/pub/distributions/ALTLinux $REPO/noarch classic
 EOF
 
 make \
     GLOBAL_HSH_APT_CONFIG=$APTCONFDIR/apt.conf \
-    GLOBAL_RELEASE=$(echo $BRANCH | tr '[:upper:]' '[:lower:]' | cut -f1 -d'/') \
+    GLOBAL_RELEASE=$(echo $BRANCH | tr '[:upper:]' '[:lower:]' | cut -f1 -d'.') \
     GLOBAL_TARGET=$ARCH
 
 mv .work/.out/altlinux.tar .

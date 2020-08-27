@@ -3,7 +3,7 @@ Simple tool to create minimal docker image from any ALT Linux branch (including 
 Usage example:
 
 ```
-$ export BRANCH=Sisyphus ARCH=x86_64
+$ export BRANCH=sisyphus ARCH=x86_64
 $ ./build-rootfs.sh # must be started on any ALT Linux with hasher/mkimage configured
 $ ./build-image.sh  # must be started on any linux with docker configured
 $ docker images
