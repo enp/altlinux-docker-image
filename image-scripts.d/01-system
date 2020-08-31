@@ -3,7 +3,8 @@
 cat > /etc/os-release << EOF
 ID="altlinux"
 NAME="ALT Linux"
-VERSION="$GLOBAL_RELEASE"
+VERSION="$GLOBAL_RELEASE (SPT)"
+VERSION_ID="$GLOBAL_RELEASE"
 EOF
 
 cat << EOF > /etc/apt/sources.list.d/local.list
